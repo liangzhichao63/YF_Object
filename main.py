@@ -7,7 +7,10 @@ if __name__ == "__main__":
     # video.Show()
     while True:
         frame=video.Read()
-        target,frame=OD.Object_Recongnition(frame,'blue')
+        target,target_size,frame=OD.Object_Recongnition(frame,'blue')
+        if(target_size!=0):
+            target=OD.TF(target)
+        # print(target)
         video.Show_img(frame)
 
     
