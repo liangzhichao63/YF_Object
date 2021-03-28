@@ -52,7 +52,7 @@ def Object_Recongnition(frame , Target_color):
     return air,box_size,frame
 
 #坐标系,图片中间的点作为坐标原点
-def TF(,Target):
+def TF(Target):
 
 
 

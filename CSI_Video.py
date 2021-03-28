@@ -2,11 +2,11 @@ import cv2
 import numpy as np
 import time
 def gstreamer_pipeline(
-    capture_width=640,
-    capture_height=360,
-    display_width=640,
-    display_height=360,
-    framerate=60,
+    capture_width=320,
+    capture_height=180,
+    display_width=320,
+    display_height=180,
+    framerate=30,
     flip_method=0,
 ):
     return (

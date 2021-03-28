@@ -18,7 +18,7 @@ def Read_Data():
 def Send_Data(data):
     global ser
     ser.write(data)
-
+#协议头
 data=bytearray(5)
 data[0]=0xff
 data[1]=0xfe
@@ -29,7 +29,6 @@ def Protocol():
     ser.write(data)
 
 
-# while True:
 #     data[2]=0xA1
 #     data[3]=0xEA
 
@@ -55,7 +54,11 @@ def Protocol():
 #define _PS2_Key_SELECT  0x0001
 #define _PS2_Key_MODE    0x0008
 
-
+def Link():
+    global data
+    data[2]=0x00
+    data[3]=0x01
+    Protocol()
 
 def Run():
     global data
@@ -93,14 +96,62 @@ def Across_Right():
     data[3]=0x08
     Protocol()
 
-# def Right():
-#     global data
-#     data[2]=0x00
-#     data[3]=0x20
-#     Protocol()
+def Set_Speed(speed):
+    global data
+    if(speed>255):
+        speed=255
+    if(speed<0):
+        speed=0
+    data[2]=0xff
+    data[3]=speed
+    Protocol()
 
-# def Right():
-#     global data
-#     data[2]=0x00
-#     data[3]=0x20
-#     Protocol()
+#舵机输入范围50-250
+def Set_Servo_A(Servo):
+    global data
+    if(Servo>255):
+        Servo=255
+    if(Servo<0):
+        Servo=0
+    data[2]=0xfa
+    data[3]=Servo
+    Protocol()
+
+def Set_Servo_B(Servo):
+    global data
+    if(Servo>255):
+        Servo=255
+    if(Servo<0):
+        Servo=0
+    data[2]=0xfb
+    data[3]=Servo
+    Protocol()
+
+def Set_Servo_C(Servo):
+    global data
+    if(Servo>255):
+        Servo=255
+    if(Servo<0):
+        Servo=0
+    data[2]=0xfc
+    data[3]=Servo
+    Protocol()
+
+def Set_Servo_D(Servo):
+    global data
+    if(Servo>255):
+        Servo=255
+    if(Servo<0):
+        Servo=0
+    data[2]=0xfd
+    data[3]=Servo
+    Protocol()
+
+# while True:
+#     Link()
+#     Set_Servo_A(150)
+#     Set_Servo_B(130)
+#     Set_Servo_C(150)
+#     Set_Servo_D(150)
+
+#     time.sleep(0.1)
