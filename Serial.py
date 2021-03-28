@@ -95,15 +95,15 @@ def Across_Right():
     data[2]=0x00
     data[3]=0x08
     Protocol()
-
+#speed:0-200
 def Set_Speed(speed):
     global data
-    if(speed>255):
-        speed=255
+    if(speed>200):
+        speed=200
     if(speed<0):
         speed=0
     data[2]=0xff
-    data[3]=speed
+    data[3]=np.int0(speed)
     Protocol()
 
 #舵机输入范围50-250

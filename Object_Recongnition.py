@@ -72,5 +72,5 @@ def TF(Target):
     else :
         X=0.5-X
         X=-2*X
-    print(Target,(X,Y))
+    # print(X,Y)
     return (X,Y)
