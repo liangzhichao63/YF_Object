@@ -1,6 +1,7 @@
 import serial 
 import os
 import time
+import numpy as np
 portx="/dev/ttyUSB0" 
 bps= 115200
 timex=5 
@@ -26,6 +27,7 @@ data[1]=0xfe
 def Protocol():
     global data 
     data[4]=(data[2]+data[3])%256
+    # print(data)
     ser.write(data)
 
 
@@ -87,7 +89,7 @@ def Right():
 def Across_Left():
     global data
     data[2]=0x00
-    data[3]=0x01
+    data[3]=0x04
     Protocol()
 
 def Across_Right():

@@ -47,7 +47,7 @@ def Show():
  
         # do other things
  
-        if kk == ord('q'):  # 按下 q 键，退出
+        if kk == ord('q'):
             break
  
     cap.release()

@@ -17,11 +17,12 @@ def Object_Recongnition(frame , Target_color):
     cnts = cv2.findContours(inRange_hsv.copy(), cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)[-2] #轮廓检测
     c=None
     if(len(cnts)==0):
-        return 0,0,frame
+        return 0,0,frame,inRange_hsv
     elif(len(cnts)>1):
         c = max(cnts, key=cv2.contourArea)
     else:
         c = max(cnts)
+    
     rect = cv2.minAreaRect(c)
     box = cv2.boxPoints(rect)
 
@@ -34,7 +35,7 @@ def Object_Recongnition(frame , Target_color):
     box_size=( (box[0][0]-box[2][0])*(box[0][1]-box[2][1]))/ (H*W)
     box_size=abs(box_size)
     if(box_size<0.001):
-        return 0,0,frame
+        return 0,0,frame,inRange_hsv
     #相对中心点
     Center_x=(box[0][0]+box[2][0])/2 
     Center_y=(box[0][1]+box[2][1])/2
@@ -49,13 +50,12 @@ def Object_Recongnition(frame , Target_color):
 
     air=((Center_x/W),(Center_y/H))
     #返回目标坐标
-    return air,box_size,frame
+    return air,box_size,frame,inRange_hsv
+
+
 
 #坐标系,图片中间的点作为坐标原点
 def TF(Target):
-
-
-
 
     X=Target[0]
     Y=Target[1]
