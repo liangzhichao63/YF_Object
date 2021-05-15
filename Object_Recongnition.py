@@ -40,6 +40,10 @@ def Object_Recongnition(frame , Target_color):
     Center_x=(box[0][0]+box[2][0])/2 
     Center_y=(box[0][1]+box[2][1])/2
 
+    Center_x=(box[0][0]+box[1][0])/2 
+    Center_y=(box[0][1]+box[1][1])/2
+    # Center_y=box[0][1]
+
     air=(np.int0(Center_x),np.int0(Center_y))
    
     
