@@ -109,6 +109,7 @@ def Set_Speed(speed):
     Protocol()
 
 #舵机输入范围50-250
+#爪子舵机 150 闭合 150-50打开
 def Set_Servo_A(Servo):
     global data
     if(Servo>255):
@@ -118,7 +119,7 @@ def Set_Servo_A(Servo):
     data[2]=0xfa
     data[3]=Servo
     Protocol()
-
+#右舵机 
 def Set_Servo_B(Servo):
     global data
     if(Servo>255):
@@ -128,7 +129,7 @@ def Set_Servo_B(Servo):
     data[2]=0xfb
     data[3]=Servo
     Protocol()
-
+#左舵机
 def Set_Servo_C(Servo):
     global data
     if(Servo>255):
@@ -138,7 +139,7 @@ def Set_Servo_C(Servo):
     data[2]=0xfc
     data[3]=Servo
     Protocol()
-
+#底盘旋转舵机
 def Set_Servo_D(Servo):
     global data
     if(Servo>255):
