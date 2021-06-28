@@ -4,7 +4,7 @@ import numpy as np
 
 color_dist = {'red': {'Lower': np.array([0, 60, 60]), 'Upper': np.array([6, 255, 255])},
               'blue': {'Lower': np.array([100, 80, 46]), 'Upper': np.array([124, 255, 255])},
-              'green': {'Lower': np.array([35, 43, 35]), 'Upper': np.array([90, 255, 255])},
+              'green': {'Lower': np.array([35, 40, 35]), 'Upper': np.array([90, 255, 255])},
               }
 #Target_color: 目标颜色 ('red'/'blue'/'green')
 #freame 图片
@@ -42,7 +42,8 @@ def Object_Recongnition(frame , Target_color):
 
     Center_x=(box[0][0]+box[1][0])/2 
     Center_y=(box[0][1]+box[1][1])/2
-    # Center_y=box[0][1]
+    Center_y=box[0][1]
+
 
     air=(np.int0(Center_x),np.int0(Center_y))
    
@@ -50,9 +51,13 @@ def Object_Recongnition(frame , Target_color):
     # print(air)
     
     cv2.drawContours(frame, [np.int0(box)], -1, (0, 255, 255), 2)#画框
-    cv2.circle(frame, air, 2, (0, 0, 255), 0)#画中点
+    # cv2.circle(frame, air, 2, (0, 0, 255), 0)#画中点
 
+    X=air[0]
+    Y=air[1]
+	
     air=((Center_x/W),(Center_y/H))
+
     #返回目标坐标
     return air,box_size,frame,inRange_hsv
 
